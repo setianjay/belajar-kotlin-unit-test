@@ -20,11 +20,32 @@ import java.lang.IllegalArgumentException
 * @AfterEach = fungsi yang mana dieksekusi sesudah Test. AfterEach akan dijalankan apabila test
 * dijalankan.
 *
+* @BeforeAll = fungsi yang mana dieksekusi sebelum semua test dijalankan. BeforeAll mempunyai syarat
+* yaitu function harus bersifat static/object(java) / companion object(kotlin).
+*
+* @AfterAll = fungsi yang mana dieksekusi sesudah semua test dijalankan. AfterAll mempunyai syarat
+* yaitu function harus bersifat static/object(java) / companion object(kotlin).
+*
+* @JvmStatic = fungsi untuk mengkonversi sebuah function menjadi function static di java.
 * */
 
 @DisplayName("Test for Class Calculator")
 class CalculatorTest {
     val calculator = Calculator()
+
+    companion object {
+        @BeforeAll
+        @JvmStatic
+        fun beforeAll(){
+            println("Sebelum semua test dijalankan")
+        }
+
+        @AfterAll
+        @JvmStatic
+        fun afterAll(){
+            println("Setelah semua test dijalankan")
+        }
+    }
 
     @BeforeEach
     fun beforeEach(){
