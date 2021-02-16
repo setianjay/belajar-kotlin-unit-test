@@ -5,6 +5,16 @@ import org.junit.jupiter.api.*
 import org.junit.jupiter.api.Test
 import java.lang.IllegalArgumentException
 
+/*
+* Note :
+* @DisplayName = Di gunakan untuk mengcustom nama Test baik nama class nya ataupun nama methodnya.
+*
+* @Test = Di gunakan untuk mengetest suatu method atau function.
+*
+* @Disabled = Menonaktifkan Test apabila method atau function di rasa masih dalam pengerjaan,
+* namun akan tetap masuk report(laporan) bahwa function ini masih dalam tahap pengerjaan.
+* */
+
 @DisplayName("Test for Class Calculator")
 class CalculatorTest {
     val calculator = Calculator()
@@ -33,6 +43,14 @@ class CalculatorTest {
     fun testDivideError(){
         assertThrows<IllegalArgumentException> {
             calculator.divide(20,0)
+        }
+    }
+
+    @Test
+    @Disabled
+    fun testComingSoon(){
+        assertDoesNotThrow {
+            calculator.divide(20,2)
         }
     }
 }
