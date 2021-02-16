@@ -3,6 +3,7 @@ package belajar.kotlin.unit.test
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.*
 import org.junit.jupiter.api.Test
+import org.opentest4j.TestAbortedException
 import java.lang.IllegalArgumentException
 
 /*
@@ -27,6 +28,11 @@ import java.lang.IllegalArgumentException
 * yaitu function harus bersifat static/object(java) / companion object(kotlin).
 *
 * @JvmStatic = fungsi untuk mengkonversi sebuah function menjadi function static di java.
+*
+* TestAbortedExeception() = fungsi throws yang mana akan mengehentikan Test. Seperti @Disable namun
+* TestAbortedExeception akan tetap di anggap sebagai Unit Test.
+*
+*
 * */
 
 @DisplayName("Test for Class Calculator")
@@ -94,5 +100,15 @@ class CalculatorTest {
         assertDoesNotThrow {
             calculator.divide(20,2)
         }
+    }
+
+    @Test
+    fun testAborted(){
+        val name = "Hari"
+        if (name != "Pali"){
+            throw TestAbortedException()
+        }
+
+        println("Function not aborted because the name is true")
     }
 }
