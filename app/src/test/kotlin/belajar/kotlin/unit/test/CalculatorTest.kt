@@ -5,15 +5,18 @@ import org.junit.jupiter.api.*
 import org.junit.jupiter.api.Test
 import java.lang.IllegalArgumentException
 
+@DisplayName("Test for Class Calculator")
 class CalculatorTest {
     val calculator = Calculator()
 
+    @DisplayName("Test for Method plus(10,10)")
     @Test
     fun testPlusSuccess(){
         val result = calculator.plus(10,10)
         assertEquals(20,result,"Hasil harusnya 30")
     }
 
+    @DisplayName("Test for Method plus(10,20)")
     @Test
     fun testPlusSuccess2(){
         val result = calculator.plus(10,20)
